@@ -19,7 +19,6 @@ async def main() -> None:
         logger.error("TELEGRAM_BOT_TOKEN is not set in .env")
         sys.exit(1)
 
-    # Initialize database
     await init_db()
 
     bot = Bot(
@@ -28,7 +27,6 @@ async def main() -> None:
     )
     dp = Dispatcher(storage=MemoryStorage())
 
-    # Register routers
     dp.include_router(start.router)
     dp.include_router(buyers.router)
 
